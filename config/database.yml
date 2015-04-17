@@ -15,10 +15,10 @@ test: &TEST
   password:
 
 production:
+  host: ec2-23-23-81-189.compute-1.amazonaws.com
   adapter: postgresql
   encoding: utf8
-  database: project_production
-  pool: 5
-  username: 
-  password:
+  database: d6g1ch10mvcg87
+  username: pighezbiktbohn
+  password: L6_DpO18Ew5OUPI6Ohih0-XWo0
 
