@@ -1,0 +1,21 @@
+
+<table>
+  <thead>
+    <tr>
+      <th>Feed</th>
+      <th>Title</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% entries.each do |entry| %>
+      <tr>
+        <td><%= link_to entry.feed.title, entry.feed %></td>
+        <td><%= link_to entry.title, entry.url %></td>
+        <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+

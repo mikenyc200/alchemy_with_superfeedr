@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<h1>A Rails based feed reader.</h1>
+
+<p>This simplistic feed reader was built using <a href="https://superfeedr.com/">Superfeedr</a>'s <a href="https://github.com/superfeedr/superfeedr-engine">Rails Engine</a>.</p>
+
+<%= link_to 'List of Feeds', feeds_path %> | <%= link_to 'New Feed', new_feed_path %>
+
+<%= render :partial => 'index', :locals => {:entries => @entries} %>
+
+<br>
+
