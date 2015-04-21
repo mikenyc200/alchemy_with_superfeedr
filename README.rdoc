@@ -1,24 +1,5 @@
-# Add Gem to gem file
-gem 'superfeedr_engine'
+= Very Basic RSS Reader
 
-$ bundle install
+This is the source code for a very basic RSS reader built with {Ruby On Rails}[http://rubyonrails.org/] using {Superfeedr}[https://superfeedr.com/] and its {Superfeedr Rails Engine}[https://rubygems.org/gems/superfeedr_engine].
 
-# Add a config file
-
-$ touch config/initailizers/superfeedr_engine.rb
-
-```ruby
-SuperfeedrEngine::Engine.feed_class = "Feed" # Use the class you use for feeds
-SuperfeedrEngine::Engine.base_path = "/superfeedr_engine/" # Base path for the engine don't forget the trailing /
-SuperfeedrEngine::Engine.host = "5ea1e5ed83bf5555.a.passageway.io" # Your hostname (no http). Used for webhooks! 
-SuperfeedrEngine::Engine.login = "demo" # Superfeedr username
-SuperfeedrEngine::Engine.password = "8ac38a53cc32f71a6445e880f76fc865" # Token value, make sure it has the associated rights you need (subscribe,unsubscribe,retrieve,list)
-SuperfeedrEngine::Engine.scheme = "http" # Can use HTTPS or a different port with SuperfeedrEngine::Engine.port
-```
-
-# Update routes in config/routes.rb
-
-mount SuperfeedrEngine::Engine => SuperfeedrEngine::Engine.base_path # Use the same to set path in the engine initialization!
-
-# you're now good to go!
-
+The Superfeedr Engine makes it trivial to <b>consume RSS feeds inside a Rails application</b>.
