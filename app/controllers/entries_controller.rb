@@ -1,5 +1,5 @@
 class EntriesController < ApplicationController
-  before_action :set_entry, only: [:show, :destroy]
+  before_action :set_entry, only: [:show, :destroy, :analysis]
 
   # GET /entries
   # GET /entries.json
@@ -20,6 +20,11 @@ class EntriesController < ApplicationController
       format.html { redirect_to entries_url, notice: 'Entry was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+
+  def analysis
+
   end
 
   private

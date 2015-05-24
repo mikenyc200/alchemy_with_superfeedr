@@ -4,6 +4,10 @@
     <tr>
       <th>Feed</th>
       <th>Title</th>
+      <th>Image</th>
+      <th>Sentiment</th>
+      <th>Sentiment score</th>
+      <th>Analysis</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -13,6 +17,14 @@
       <tr>
         <td><%= link_to entry.feed.title, entry.feed %></td>
         <td><%= link_to entry.title, entry.url %></td>
+        <td>
+          <% if entry and entry.image_url  %>
+            <%= link_to "Image" , entry.image_url %>
+          <%end  %>
+        </td>
+        <td><%= entry.sentiment %></td>
+        <td><%= entry.sentiment_score %></td>
+        <td><%= link_to "Analysis", analysis_entry_path(entry) %></td>
         <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

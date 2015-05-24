@@ -1,7 +1,7 @@
 development:
   adapter: postgresql
   encoding: utf8
-  database: project_development
+  database: alchemy_db
   pool: 5
   username: 
   password:

@@ -1,0 +1,42 @@
+
+<table>
+  <thead>
+  <tr>
+    <th>Concept</th>
+    <th>Relevance</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @entry.concepts.each do |concept| %>
+      <tr>
+        <td><%= concept.text %></td>
+        <td><%= concept.relevance.to_f %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<table>
+  <thead>
+  <tr>
+    <th>Keyword</th>
+    <th>Relevance</th>
+  </tr>
+  </thead>
+  <tbody>
+  <% @entry.keywords.each do |k| %>
+      <tr>
+        <td><%= k.text %></td>
+        <td><%= k.relevance.to_f %></td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+
+
+
+
