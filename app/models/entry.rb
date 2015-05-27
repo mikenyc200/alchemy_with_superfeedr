@@ -19,7 +19,12 @@ class Entry < ActiveRecord::Base
     begin
       #sentiment analysis
       sentiment_response = AlchemyAPI.search(:sentiment_analysis, url: self.url)
-      self.update(:sentiment => sentiment_response["type"], :sentiment_score => sentiment_response["score"])
+      #text extraction
+      t_response =  AlchemyAPI.search(:text_extraction, url: self.url)
+
+      #self.update(:sentiment => sentiment_response["type"], :sentiment_score => sentiment_response["score"])
+
+      self.update(:sentiment => sentiment_response["type"], :sentiment_score => sentiment_response["score"] , :extracted_text => t_response)
 
       #concept tagging
       concept_response = AlchemyAPI.search(:concept_tagging, url: self.url)
@@ -29,7 +34,7 @@ class Entry < ActiveRecord::Base
       end
 
       #keyword extraction
-      keyword_response = AlchemyAPI.search(:keyword_extraction, url: self.url)
+      #keyword_response = AlchemyAPI.search(:keyword_extraction, url: self.url)
 
       keyword_response.each do |c|
         keywords.create(:text => c["text"], :relevance => c["relevance"])
