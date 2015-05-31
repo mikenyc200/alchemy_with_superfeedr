@@ -16,15 +16,15 @@
     <% entries.each do |entry| %>
       <tr>
         <td><%= link_to entry.feed.title, entry.feed %></td>
-        <td><%= link_to entry.title, entry.url %></td>
+        <td><%= link_to entry.title, analysis_entry_path(entry) %></td>
         <td>
-          <% if entry and entry.image_url  %>
-            <%= link_to "Image" , entry.image_url %>
+          <% if entry and entry.image %>
+            <%= link_to "Image" , entry.image %>
           <%end  %>
         </td>
         <td><%= entry.sentiment %></td>
         <td><%= entry.sentiment_score %></td>
-        <td><%= link_to "Analysis", analysis_entry_path(entry) %></td>
+        <td><%= link_to "Permalink", entry.url %></td>
         <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

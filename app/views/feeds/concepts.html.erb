@@ -1,0 +1,54 @@
+
+<hr>
+<h4 class="text-center">Filters</h4>
+
+<!--<div class="row">-->
+<!--<div class="small-10 medium-11 columns">-->
+<!--<div class="range-slider" data-slider data-options="display_selector: #sliderOutput3; start: 0; end: 10;">-->
+<!--<span class="range-slider-handle" role="slider" tabindex="0"></span>-->
+<!--<span class="range-slider-active-segment"></span>-->
+<!--</div>-->
+<!--</div>-->
+<!--<div class="small-2 medium-1 columns">-->
+<!--<span id="sliderOutput3"></span>-->
+<!--</div>-->
+<!--</div>-->
+
+<div class="row">
+  <div class="columns large-4 text-center">
+
+    <%= label "Text" , "text" %>
+    <%= text_field_tag("text") %>
+
+    <%= label "relevance score" , "relevance score" %>
+    <span class="prefix"> greater than </span><%= text_field_tag("relevance") %>
+
+    <div class="text-center">
+      <%= button_tag "filter" , :onclick => "filter_concepts()" , :class => "tiny  radius success"%>
+    </div>
+
+  </div>
+</div>
+
+<hr>
+
+
+<div id="feed_concepts">
+
+
+<%= render :partial => 'concepts_table' %>
+
+</div>
+
+
+<script type="text/javascript">
+    function filter_concepts()
+    {
+        $.ajax({
+            url: '<%= filter_by_concepts_feeds_path %>',
+            type: 'GET',
+            data: { text: $('#text').val() , relevance: $('#relevance').val() }
+        });
+    }
+
+</script>

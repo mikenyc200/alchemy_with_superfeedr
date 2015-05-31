@@ -36,9 +36,9 @@ class Entry < ActiveRecord::Base
       #keyword extraction
       #keyword_response = AlchemyAPI.search(:keyword_extraction, url: self.url)
 
-      keyword_response.each do |c|
-        keywords.create(:text => c["text"], :relevance => c["relevance"])
-      end
+      #keyword_response.each do |c|
+      #  keywords.create(:text => c["text"], :relevance => c["relevance"])
+      #end
     rescue => e
       puts "Error in alchemy====>" + e.message
     end

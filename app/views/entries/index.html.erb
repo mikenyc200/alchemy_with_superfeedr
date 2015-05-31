@@ -4,9 +4,58 @@
 
 <p>This simplistic feed reader was built using <a href="https://superfeedr.com/">Superfeedr</a>'s <a href="https://github.com/superfeedr/superfeedr-engine">Rails Engine</a>.</p>
 
+<hr>
+<h4 class="text-center">Filters</h4>
+
+<!--<div class="row">-->
+  <!--<div class="small-10 medium-11 columns">-->
+    <!--<div class="range-slider" data-slider data-options="display_selector: #sliderOutput3; start: 0; end: 10;">-->
+      <!--<span class="range-slider-handle" role="slider" tabindex="0"></span>-->
+      <!--<span class="range-slider-active-segment"></span>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="small-2 medium-1 columns">-->
+    <!--<span id="sliderOutput3"></span>-->
+  <!--</div>-->
+<!--</div>-->
+
+<div class="row">
+  <div class="columns large-4 text-center">
+      <%= label "concepts" ,"concepts" %>
+      <%= select_tag 'concepts' , options_for_select( concepts_hash ) , :include_blank => true %>
+
+    <%= label "Text" , "text" %>
+    <%= text_field_tag("text") %>
+
+    <%= label "sentiment score" , "sentiment score" %>
+    <span class="prefix"> greater than </span><%= text_field_tag("sentiment") %>
+
+    <div class="text-center">
+    <%= button_tag "filter" , :onclick => "filter_concepts()" , :class => "tiny  radius success"%>
+    </div>
+
+  </div>
+</div>
+
+<hr>
+
 <%= link_to 'List of Feeds', feeds_path %> | <%= link_to 'New Feed', new_feed_path %>
 
+<div id="entries">
 <%= render :partial => 'index', :locals => {:entries => @entries} %>
+</div>
 
 <br>
 
+
+<script type="text/javascript">
+  function filter_concepts()
+  {
+      $.ajax({
+          url: '<%= filter_by_concepts_entries_path %>',
+          type: 'GET',
+          data: {concept : $('#concepts').val() , text: $('#text').val() , sentiment: $('#sentiment').val()}
+      });
+  }
+
+</script>

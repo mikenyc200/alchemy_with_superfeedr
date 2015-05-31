@@ -2,7 +2,7 @@
 <div>
   <h5>Extracted text</h5>
   <p>
-      <%= @entry.extracted_text %>
+      <%= simple_format @entry.extracted_text %>
   </p>
 </div>
 <table>
@@ -25,22 +25,22 @@
 <br>
 
 
-<table>
-  <thead>
-  <tr>
-    <th>Keyword</th>
-    <th>Relevance</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @entry.keywords.each do |k| %>
-      <tr>
-        <td><%= k.text %></td>
-        <td><%= k.relevance.to_f %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+<!--<table>-->
+  <!--<thead>-->
+  <!--<tr>-->
+    <!--<th>Keyword</th>-->
+    <!--<th>Relevance</th>-->
+  <!--</tr>-->
+  <!--</thead>-->
+  <!--<tbody>-->
+  <!--<%# @entry.keywords.each do |k| %>-->
+      <!--<tr>-->
+        <!--<td><%#= k.text %></td>-->
+        <!--<td><%#= k.relevance.to_f %></td>-->
+      <!--</tr>-->
+  <!--<%# end %>-->
+  <!--</tbody>-->
+<!--</table>-->
 
 
 

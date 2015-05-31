@@ -2,11 +2,15 @@
 
 <h1>Listing Feeds</h1>
 
+
+
 <table>
   <thead>
     <tr>
       <th>Title</th>
       <th>Url</th>
+      <th>Entries count</th>
+      <th>Concepts </th>
       <th colspan="4"></th>
     </tr>
   </thead>
@@ -16,6 +20,8 @@
       <tr>
         <td><%= feed.title %></td>
         <td><%= feed.url %></td>
+        <td><%= link_to feed.entries.count , feed%></td>
+        <td><%= link_to Concept.where(:entry_id => feed.entries.pluck(:id)).count , concepts_feed_path(feed) %></td>
         <td><%= link_to 'Retrieve', retrieve_feed_path(feed) %></td>
         <td><%= link_to 'Show', feed %></td>
         <td><%= link_to 'Edit', edit_feed_path(feed) %></td>

@@ -53,3 +53,5 @@ end
 gem 'alchemy-api-rb', :require => 'alchemy_api'
 
 gem 'jquery-datatables-rails', '~> 3.3.0'
+
+gem 'foundation-rails'

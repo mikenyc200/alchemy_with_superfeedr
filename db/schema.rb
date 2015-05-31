@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150524163241) do
+ActiveRecord::Schema.define(version: 20150531094628) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,7 +34,8 @@ ActiveRecord::Schema.define(version: 20150524163241) do
     t.datetime "updated_at",      null: false
     t.string   "sentiment"
     t.decimal  "sentiment_score"
-    t.string   "image_url"
+    t.string   "image"
+    t.text     "extracted_text"
   end
 
   create_table "feeds", force: :cascade do |t|

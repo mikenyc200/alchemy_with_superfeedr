@@ -5,15 +5,25 @@ Rails.application.routes.draw do
   resources :entries  do
     member do
       get 'analysis'
+
+    end
+    collection do
+      get 'filter_by_concepts'
     end
   end
 
+  get 'concepts' => "feeds#all_concepts"
 
   resources :feeds do
     member do
       get 'retrieve'
       post 'subscribe'
       post 'unsubscribe'
+      get 'concepts'
+    end
+
+    collection do
+      get 'filter_by_concepts'
     end
   end
 
