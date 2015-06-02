@@ -13,7 +13,7 @@ class EntriesController < ApplicationController
     entries_ids = Entry.all.pluck(:id)
 
     if !params["sentiment"].blank?
-      @entries =  Entry.where(:id => entries_ids).where("sentiment_score > ?" , params[:sentiment])
+      @entries = Entry.where(:id => entries_ids).where("sentiment_score > ?", params[:sentiment])
       entries_ids = @entries.pluck(:id)
     end
 
@@ -23,28 +23,26 @@ class EntriesController < ApplicationController
     end
 
     if !params["text"].blank?
-      @entries = Entry.where(:id => entries_ids).where("lower(extracted_text) like ?" , "%#{params["text"].downcase}%")
+      @entries = Entry.where(:id => entries_ids).where("lower(extracted_text) like ?", "%#{params["text"].downcase}%")
     end
 
-
-    #if params["text"].blank? and !params["concept"].blank? and params["sentiment"].blank?
-    #  @entries = Entry.where(:id => Concept.where(:text => params["concept"]).pluck(:entry_id))
-    #elsif params["concept"].blank? and !params["text"].blank?  and params["sentiment"].blank?
-    #  @entries = Entry.where("extracted_text like ?" , "%#{params["text"]}%")
-    #elsif !params["concept"].blank? and !params["text"].blank?  and params["sentiment"].blank?
-    #  @entries = Entry.where("extracted_text like ?" ,  "%#{params["text"]}%"  ).where(:id => Concept.where(:text => params["concept"]).pluck(:entry_id))
-    #
-    #elsif params["concept"].blank? and params["text"].blank? and !params["sentiment"].blank?
-    #
-    #else
-    #  @entries = Entry.all
-    #end
 
   end
 
   # GET /entries/1
   # GET /entries/1.json
   def show
+  end
+
+  def entries_from_concepts
+
+    if !params["concept"].blank?
+      @entries = Entry.where(:id => Concept.where(:text => params["concept"]).pluck(:entry_id))
+    end
+
+    @filter = params["concept"]
+
+    render "entries/index"
   end
 
   # DELETE /entries/1

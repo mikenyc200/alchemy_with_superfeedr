@@ -9,6 +9,7 @@ Rails.application.routes.draw do
     end
     collection do
       get 'filter_by_concepts'
+      get 'entries_from_concepts'
     end
   end
 

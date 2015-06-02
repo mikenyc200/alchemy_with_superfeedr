@@ -7,7 +7,7 @@
   <tbody>
   <% concepts_array(@concepts.ids).each do |concept| %>
       <tr>
-        <td><%= concept %></td>
+        <td><%= link_to concept , entries_from_concepts_entries_path(:concept => concept.split('(')[0]) %></td>
       </tr>
   <% end %>
   </tbody>

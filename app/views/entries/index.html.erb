@@ -22,7 +22,7 @@
 <div class="row">
   <div class="columns large-4 text-center">
       <%= label "concepts" ,"concepts" %>
-      <%= select_tag 'concepts' , options_for_select( concepts_hash ) , :include_blank => true %>
+      <%= select_tag 'concepts' , options_for_select( concepts_hash , @filter) , :include_blank => true %>
 
     <%= label "Text" , "text" %>
     <%= text_field_tag("text") %>
