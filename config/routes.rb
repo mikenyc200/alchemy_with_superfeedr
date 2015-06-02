@@ -24,6 +24,7 @@ Rails.application.routes.draw do
 
     collection do
       get 'filter_by_concepts'
+      get 'filter_by_all_concepts'
     end
   end
 

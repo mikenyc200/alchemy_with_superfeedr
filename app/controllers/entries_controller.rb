@@ -23,7 +23,7 @@ class EntriesController < ApplicationController
     end
 
     if !params["text"].blank?
-      @entries = Entry.where(:id => entries_ids).where("extracted_text like ?" , "%#{params["text"]}%")
+      @entries = Entry.where(:id => entries_ids).where("lower(extracted_text) like ?" , "%#{params["text"].downcase}%")
     end
 
 

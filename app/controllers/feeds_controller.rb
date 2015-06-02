@@ -26,7 +26,7 @@ class FeedsController < ApplicationController
 
   def all_concepts
     @concepts = Concept.all
-    render "feeds/concepts"
+    render "feeds/all_concepts"
   end
 
   def filter_by_concepts
@@ -41,7 +41,25 @@ class FeedsController < ApplicationController
 
 
     if !params["text"].blank?
-      @concepts = Concept.where(:id => concepts_ids).where("text like ?" , "%#{params["text"]}%")
+      @concepts = Concept.where(:id => concepts_ids).where("lower(text) like ?" , "%#{params["text"].downcase}%")
+    end
+
+  end
+
+
+  def filter_by_all_concepts
+
+    @concepts = Concept.all
+    concepts_ids = Concept.all.pluck(:id)
+
+    #if !params["relevance"].blank?
+    #  @concepts =  Concept.where(:id => concepts_ids).where("relevance > ?" , params[:relevance])
+    #  concepts_ids = @concepts.pluck(:id)
+    #end
+
+
+    if !params["text"].blank?
+      @concepts = Concept.where(:id => concepts_ids).where("lower(text) like ?" , "%#{params["text"].downcase}%")
     end
 
   end
