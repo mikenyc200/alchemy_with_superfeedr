@@ -1,10 +1,10 @@
 development:
-  adapter: postgresql
+  adapter: mysql2
   encoding: utf8
   database: alchemy_db
   pool: 5
-  username: 
-  password:
+  username: root
+  password: alchemy9
 
 test: &TEST
   adapter: postgresql
