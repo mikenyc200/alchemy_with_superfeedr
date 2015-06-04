@@ -22,7 +22,12 @@
   <tbody>
   <% @entry.concepts.each do |concept| %>
       <tr>
+<<<<<<< HEAD
 <td><%= link_to concept.text , entries_from_concepts_entries_path(:concept => concept.text) %></td>
+=======
+        <!--<td><%#= concept.text %></td>-->
+        <td><%= link_to concept.text , entries_from_concepts_entries_path(:concept => concept.text) %></td>
+>>>>>>> 47650bca782a10800dfba473e4ab4ff4cd546673
         <td><%= concept.relevance.to_f %></td>
       </tr>
   <% end %>
