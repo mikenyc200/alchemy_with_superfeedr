@@ -8,7 +8,8 @@
   <tbody>
   <% @concepts.each do |concept| %>
       <tr>
-        <td><%= concept.text %></td>
+        <!--<td><%#= concept.text %></td>-->
+        <td><%= link_to concept.text , entries_from_concepts_entries_path(:concept => concept.text) %></td>
         <td><%= concept.relevance.to_f %></td>
       </tr>
   <% end %>
