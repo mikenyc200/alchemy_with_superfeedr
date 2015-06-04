@@ -11,47 +11,44 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531094628) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20150604170158) do
 
   create_table "concepts", force: :cascade do |t|
-    t.integer  "entry_id"
-    t.string   "text"
-    t.decimal  "relevance"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "entry_id",   limit: 4
+    t.string   "text",       limit: 255
+    t.decimal  "relevance",              precision: 6, scale: 5
+    t.datetime "created_at",                                     null: false
+    t.datetime "updated_at",                                     null: false
   end
 
   create_table "entries", force: :cascade do |t|
-    t.integer  "feed_id"
-    t.string   "atom_id"
-    t.string   "title"
-    t.string   "url"
-    t.string   "content"
-    t.datetime "created_at",      null: false
-    t.datetime "updated_at",      null: false
-    t.string   "sentiment"
-    t.decimal  "sentiment_score"
-    t.string   "image"
-    t.text     "extracted_text"
+    t.integer  "feed_id",         limit: 4
+    t.string   "atom_id",         limit: 255
+    t.string   "title",           limit: 255
+    t.string   "url",             limit: 255
+    t.string   "content",         limit: 255
+    t.datetime "created_at",                                               null: false
+    t.datetime "updated_at",                                               null: false
+    t.string   "sentiment",       limit: 255
+    t.decimal  "sentiment_score",                  precision: 6, scale: 5
+    t.string   "image",           limit: 255
+    t.text     "extracted_text",  limit: 16777215
   end
 
   create_table "feeds", force: :cascade do |t|
-    t.string   "title"
-    t.string   "url"
-    t.string   "status"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "title",      limit: 255
+    t.string   "url",        limit: 255
+    t.string   "status",     limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "keywords", force: :cascade do |t|
-    t.integer  "entry_id"
-    t.string   "text"
-    t.decimal  "relevance"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "entry_id",   limit: 4
+    t.string   "text",       limit: 255
+    t.decimal  "relevance",              precision: 10
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
 end

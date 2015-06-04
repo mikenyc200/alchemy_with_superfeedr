@@ -1,4 +1,4 @@
-
+<% provide(:title, 'Entries') %>
 <table>
   <thead>
     <tr>
@@ -7,7 +7,7 @@
       <th>Image</th>
       <th>Sentiment</th>
       <th>Sentiment score</th>
-      <th>Analysis</th>
+      <th>Permalink</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -19,7 +19,7 @@
         <td><%= link_to entry.title, analysis_entry_path(entry) %></td>
         <td>
           <% if entry and entry.image %>
-            <%= link_to "Image" , entry.image %>
+			<img src="<%= entry.image %>">
           <%end  %>
         </td>
         <td><%= entry.sentiment %></td>

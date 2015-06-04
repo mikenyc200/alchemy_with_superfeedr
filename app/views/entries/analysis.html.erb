@@ -1,7 +1,14 @@
-
+<% provide(:title, @entry.title) %>
 <div>
-  <h5>Extracted text</h5>
+  <h4>
+    <% if @entry and @entry.title %>
+       <%= @entry.title %>
+     <% end %>
+    </h4>
   <p>
+	  <% if @entry and @entry.image %>
+	      <img src="<%= @entry.image %>" align="left" style="margin-right:10px;">
+	    <% end %>
       <%= simple_format @entry.extracted_text %>
   </p>
 </div>
@@ -15,7 +22,7 @@
   <tbody>
   <% @entry.concepts.each do |concept| %>
       <tr>
-        <td><%= concept.text %></td>
+<td><%= link_to concept.text , entries_from_concepts_entries_path(:concept => concept.text) %></td>
         <td><%= concept.relevance.to_f %></td>
       </tr>
   <% end %>
