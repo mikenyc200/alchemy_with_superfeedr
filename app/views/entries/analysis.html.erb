@@ -1,4 +1,23 @@
 <% provide(:title, @entry.title) %>
+
+<div class="card">
+  <% if @entry and @entry.image %>
+      <img src="<%= @entry.image %>" >
+    <% end %>
+<div class="card-divider">
+    <% if @entry and @entry.title %>
+       <%= @entry.title %>
+     <% end %>
+</div>
+<div class="card-section">
+<h4><% if @entry and @entry.title %>
+       <%= @entry.title %>
+     <% end %></h4>
+<p><%= simple_format @entry.extracted_text %></p>
+</div>
+</div>
+
+
 <div>
   <h4>
     <% if @entry and @entry.title %>
@@ -22,13 +41,8 @@
   <tbody>
   <% @entry.concepts.each do |concept| %>
       <tr>
-<<<<<<< HEAD
-<td><%= link_to concept.text , entries_from_concepts_entries_path(:concept => concept.text) %></td>
-=======
-        <!--<td><%#= concept.text %></td>-->
-        <td><%= link_to concept.text , entries_from_concepts_entries_path(:concept => concept.text) %></td>
->>>>>>> 47650bca782a10800dfba473e4ab4ff4cd546673
-        <td><%= concept.relevance.to_f %></td>
+		<td><%= link_to concept.text , entries_from_concepts_entries_path(:concept => concept.text) %></td>
+      	<td><%= concept.relevance.to_f %></td>
       </tr>
   <% end %>
   </tbody>
