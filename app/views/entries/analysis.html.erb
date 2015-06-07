@@ -1,22 +1,5 @@
 <% provide(:title, @entry.title) %>
 
-<div class="card">
-  <% if @entry and @entry.image %>
-      <img src="<%= @entry.image %>" >
-    <% end %>
-<div class="card-divider">
-    <% if @entry and @entry.title %>
-       <%= @entry.title %>
-     <% end %>
-</div>
-<div class="card-section">
-<h4><% if @entry and @entry.title %>
-       <%= @entry.title %>
-     <% end %></h4>
-<p><%= simple_format @entry.extracted_text %></p>
-</div>
-</div>
-
 
 <div>
   <h4>
@@ -24,6 +7,10 @@
        <%= @entry.title %>
      <% end %>
     </h4>
+	
+    <% if @entry and @entry.created_at %>
+       <%= @entry.created_at %>
+     <% end %>
   <p>
 	  <% if @entry and @entry.image %>
 	      <img src="<%= @entry.image %>" align="left" style="margin-right:10px;">

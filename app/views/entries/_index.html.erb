@@ -2,10 +2,10 @@
 <table>
   <thead>
     <tr>
-      <th>Feed</th>
-      <th>Title</th>
       <th>Image</th>
-      <th>Sentiment</th>
+      <th>Article</th>
+      <!-- <th>Image</th> -->
+      <!-- <th>Sentiment</th> -->
       <th>Sentiment score</th>
       <th>Permalink</th>
       <th colspan="1"></th>
@@ -15,15 +15,27 @@
   <tbody>
     <% entries.each do |entry| %>
       <tr>
-        <td><%= link_to entry.feed.title, entry.feed %></td>
-        <td><%= link_to entry.title, analysis_entry_path(entry) %></td>
         <td>
-          <% if entry and entry.image %>
+		  <% if entry and entry.image %>
 			<img src="<%= entry.image %>">
           <%end  %>
-        </td>
-        <td><%= entry.sentiment %></td>
-        <td><%= entry.sentiment_score %></td>
+	    </td>
+        <td><%= link_to entry.title, analysis_entry_path(entry) %> <br>
+			<%= link_to entry.feed.title, entry.feed %> <br>
+			<%= entry.created_at %></td>
+        <!-- <td>
+          <% if entry and entry.image %>
+			<img src="<%= entry.image %>">
+          <% end %>
+        </td> -->
+        <!-- <td><%= entry.sentiment %></td> -->
+        <td>
+			<% if entry.sentiment_score and entry.sentiment_score >= 0 %>
+			     <% $colorTemp = "#66CD00" %>
+			   <% else %>
+			     <% $colorTemp = "#FF0000" %>
+			   <% end %>
+			<span style="color:<%= $colorTemp %>;"><%= entry.sentiment_score %></span></td>
         <td><%= link_to "Permalink", entry.url %></td>
         <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
