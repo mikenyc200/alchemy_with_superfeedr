@@ -2,8 +2,9 @@ SuperfeedrEngine::Engine.feed_class = "Feed"
 
 #SuperfeedrEngine::Engine.host = "cryptic-peak-7737.herokuapp.com"
 #SuperfeedrEngine::Engine.host = "677ebc2.ngrok.com"
-SuperfeedrEngine::Engine.host = "52.25.102.158:3000"
-SuperfeedrEngine::Engine.login = "Mikenyc"
+SuperfeedrEngine::Engine.host = "52.25.102.158"
+#SuperfeedrEngine::Engine.login = "Mikenyc"
+SuperfeedrEngine::Engine.login = "trackermike"
 SuperfeedrEngine::Engine.password = "YouShallNotPass"
 SuperfeedrEngine::Engine.scheme = "http"
 SuperfeedrEngine::Engine.base_path = "/secret_path_for_superfeedr/" # don't forget the trailing /
