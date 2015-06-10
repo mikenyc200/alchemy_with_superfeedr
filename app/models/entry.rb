@@ -24,7 +24,7 @@ class Entry < ActiveRecord::Base
 
       #self.update(:sentiment => sentiment_response["type"], :sentiment_score => sentiment_response["score"])
 
-      self.update(:sentiment => sentiment_response["type"], :sentiment_score => sentiment_response["score"] , :extracted_text => t_response)
+      self.update(:sentiment => sentiment_response["type"], :sentiment_score => sentiment_response["score"] , :extracted_text => HTMLEntities.new.decode(t_response))
 
       #concept tagging
       concept_response = AlchemyAPI.search(:concept_tagging, url: self.url)

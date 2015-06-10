@@ -15,7 +15,7 @@ class Feed < ActiveRecord::Base
     update_attributes(:status => params["status"]["http"])
 
     params['items'].each do |i|
-      entries.create(:atom_id => i["id"], :title => i["title"], :url => i["permalinkUrl"], :image => extract_image(i), :content => i["content"])
+      entries.create(:atom_id => i["id"], :title => HTMLEntities.new.decode(i["title"]), :url => i["permalinkUrl"], :image => extract_image(i), :content => i["content"])
     end
   end
 
