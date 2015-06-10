@@ -3,6 +3,10 @@ class Entry < ActiveRecord::Base
 
   validates :atom_id, uniqueness: {scope: :feed_id}
 
+  validates :url, uniqueness: true
+
+  validates :extracted_text, uniqueness: true
+
   has_many :concepts, dependent: :destroy
 
   has_many :keywords, dependent: :destroy
