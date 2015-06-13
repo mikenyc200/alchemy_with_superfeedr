@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+  default_url_options :host => "52.25.102.158"
+
+  get 'notifications' => "notifications#configure"
+  put 'notification' => "notifications#update"
+
   root :to => 'entries#index'
 
   resources :entries  do
@@ -14,6 +19,7 @@ Rails.application.routes.draw do
   end
 
   get 'concepts' => "feeds#all_concepts"
+
 
   resources :feeds do
     member do
@@ -30,7 +36,7 @@ Rails.application.routes.draw do
   end
 
   mount SuperfeedrEngine::Engine => SuperfeedrEngine::Engine.base_path # Use the same to set path in the engine initialization!
-
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

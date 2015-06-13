@@ -5,6 +5,7 @@ class FeedsController < ApplicationController
   # GET /feeds
   def index
     @feeds = Feed.all
+    #UserMailer.feedback_notification("testing").deliver
   end
 
   # GET /feeds/1

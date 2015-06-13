@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-ruby '1.9.3'
+ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
@@ -30,7 +30,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use Unicorn as the app server
- gem 'unicorn'
+ #gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -55,3 +55,12 @@ gem 'alchemy-api-rb', :require => 'alchemy_api'
 gem 'jquery-datatables-rails', '~> 3.3.0'
 
 gem 'foundation-rails'
+
+gem 'htmlentities'
+
+gem 'flickraw'
+
+gem 'delayed_job_active_record'
+gem 'delayed_job_web'
+gem 'daemons'
+

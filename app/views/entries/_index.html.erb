@@ -29,17 +29,19 @@
     <% entries.each do |entry| %>
       <tr>
         <td>
-		  <% if entry and entry.image %>
+<!--
 			<div class="thumb" style="background-image: url('<%= entry.image %>');"></div>
-          <%end  %>
+-->
+          <% if entry and entry.image and !entry.image.include? "flickr"%>
+              <img src="<%= entry.image %>">
+          <% elsif entry and entry.image %>
+              <img src="<%= entry.image %>" style="width: 151px ;height: 151px ;" >
+              <br>
+              <span class="tiny">flickr</span>
+          <% end %>
 	    </td>
         <td><h4><%= link_to entry.title, analysis_entry_path(entry) %></h4><br>
 			<%= entry.created_at %></td>
-        <!-- <td>
-          <% if entry and entry.image %>
-			<img src="<%= entry.image %>">
-          <% end %>
-        </td> -->
         <!-- <td><%= entry.sentiment %></td> -->
         <td>
 			<% if entry.sentiment_score and entry.sentiment_score >= 0 %>

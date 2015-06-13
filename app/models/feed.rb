@@ -12,10 +12,14 @@ class Feed < ActiveRecord::Base
   end
 
   def notified params
-    update_attributes(:status => params["status"]["http"])
+    begin
+      update_attributes(:status => params["status"]["http"])
 
-    params['items'].each do |i|
-      entries.create(:atom_id => i["id"], :title => i["title"], :url => i["permalinkUrl"], :image => extract_image(i), :content => i["content"])
+      params['items'].each do |i|
+        entries.create(:atom_id => i["id"], :title => HTMLEntities.new.decode(i["title"]), :url => i["permalinkUrl"], :image => extract_image(i), :content => i["content"])
+      end
+    rescue => e
+      logger.error e.message
     end
   end
 
