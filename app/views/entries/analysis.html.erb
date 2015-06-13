@@ -7,7 +7,17 @@
        <%= @entry.title %>
      <% end %>
     </h4>
-	
+    <% if @entry and @entry.url %>
+       <%= link_to "PermalinkURL", @entry.url %>
+     <% end %>
+	<br>
+	<% if @entry.sentiment_score and @entry.sentiment_score >= 0 %>
+	     <% $colorTemp = "#66CD00" %>
+	   <% else %>
+	     <% $colorTemp = "#FF0000" %>
+	   <% end %>
+	Sentiment: <span style="color:<%= $colorTemp %>;"><%= @entry.sentiment_score %></span>
+	<br>
     <% if @entry and @entry.created_at %>
        <%= @entry.created_at %>
      <% end %>
