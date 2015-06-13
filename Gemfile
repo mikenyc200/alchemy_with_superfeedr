@@ -57,3 +57,10 @@ gem 'jquery-datatables-rails', '~> 3.3.0'
 gem 'foundation-rails'
 
 gem 'htmlentities'
+
+gem 'flickraw'
+
+gem 'delayed_job_active_record'
+gem 'delayed_job_web'
+gem 'daemons'
+
