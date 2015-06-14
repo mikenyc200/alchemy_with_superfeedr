@@ -40,11 +40,11 @@ Rails.application.configure do
 
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
-      address:              'smtp.zoho.com',
-      port:                  587,
-      domain:               'autoattend.com',
-      :user_name            => 'admin@autoattend.com',
-      :password             => 'Billa123',
+      address:              'smtp.sendgrid.net',
+      port:                  25,
+      domain:               'gmail.com',
+      :user_name            => 'mike2nyc',
+      :password             => 'YouShallNotPass99',
       :authentication       => :login,
   }
   # Raises error for missing translations
