@@ -7,8 +7,7 @@
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Url</th>
+      <th>Feed</th>
       <th>Entries count</th>
       <th>Concepts </th>
       <th colspan="4"></th>
@@ -18,8 +17,7 @@
   <tbody>
     <% @feeds.each do |feed| %>
       <tr>
-        <td><%= feed.title %></td>
-        <td><%= feed.url %></td>
+        <td ><a href="<%= feed.url %>"><%= feed.title %></a></td>
         <td><%= link_to feed.entries.count , feed%></td>
         <td><%= link_to Concept.where(:entry_id => feed.entries.pluck(:id)).count , concepts_feed_path(feed) %></td>
         <td><%= link_to 'Retrieve', retrieve_feed_path(feed) %></td>

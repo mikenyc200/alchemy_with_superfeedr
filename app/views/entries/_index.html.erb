@@ -1,4 +1,17 @@
 <% provide(:title, 'Entries') %>
+
+<style>
+.thumb {
+    display: inline-block;
+    width: 200px;
+	height: 150px;
+    margin: 0px;
+    border: 1px solid #c99;
+    background-position: center center;
+    background-size: cover;
+}
+</style>
+
 <table>
   <thead>
     <tr>
@@ -16,6 +29,9 @@
     <% entries.each do |entry| %>
       <tr>
         <td>
+<!--
+			<div class="thumb" style="background-image: url('<%= entry.image %>');"></div>
+-->
           <% if entry and entry.image and !entry.image.include? "flickr"%>
               <img src="<%= entry.image %>">
           <% elsif entry and entry.image %>
@@ -24,8 +40,7 @@
               <span class="tiny">flickr</span>
           <% end %>
 	    </td>
-        <td><%= link_to entry.title, analysis_entry_path(entry) %> <br>
-			<%= link_to entry.feed.title, entry.feed %> <br>
+        <td><h4><%= link_to entry.title, analysis_entry_path(entry) %></h4><br>
 			<%= entry.created_at %></td>
         <!-- <td><%= entry.sentiment %></td> -->
         <td>
