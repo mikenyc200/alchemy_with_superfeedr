@@ -1,5 +1,5 @@
 class UserMailer < ActionMailer::Base
-  default :from => "admin@autoattend.com"
+  default :from => "mikenyc@gmail.com"
 
   def notification(email_id,entry_id)
     @entries =  Entry.where("id > ?" , entry_id)

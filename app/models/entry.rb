@@ -5,7 +5,7 @@ class Entry < ActiveRecord::Base
 
   validates :url, uniqueness: true
 
-  validates :extracted_text, uniqueness: true
+  #validates :extracted_text, uniqueness: true
 
   has_many :concepts, dependent: :destroy
 
