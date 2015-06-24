@@ -13,9 +13,9 @@ environment = ENV['RACK_ENV'] || ENV['RAILS_ENV'] || 'production'
 # Save on RAM while in development
 if environment == 'development'
   worker_processes 4
-  listen '172.31.22.5:3000'
+  listen '172.31.30.36:3000'
 elsif environment == 'production'
-  listen '172.31.22.5:3000'
+  listen '172.31.30.36:3000'
   worker_processes 8
 end
 

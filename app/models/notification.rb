@@ -1,4 +1,3 @@
-require 'sendgrid-ruby'
 class Notification < ActiveRecord::Base
 
   def configuration_changed

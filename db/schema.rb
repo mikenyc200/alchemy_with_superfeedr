@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150604170158) do
+ActiveRecord::Schema.define(version: 20150613080050) do
 
   create_table "concepts", force: :cascade do |t|
     t.integer  "entry_id",   limit: 4
@@ -21,12 +21,28 @@ ActiveRecord::Schema.define(version: 20150604170158) do
     t.datetime "updated_at",                                     null: false
   end
 
+  create_table "delayed_jobs", force: :cascade do |t|
+    t.integer  "priority",   limit: 4,     default: 0, null: false
+    t.integer  "attempts",   limit: 4,     default: 0, null: false
+    t.text     "handler",    limit: 65535,             null: false
+    t.text     "last_error", limit: 65535
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by",  limit: 255
+    t.string   "queue",      limit: 255
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority", using: :btree
+
   create_table "entries", force: :cascade do |t|
     t.integer  "feed_id",         limit: 4
     t.string   "atom_id",         limit: 255
     t.string   "title",           limit: 255
     t.string   "url",             limit: 255
-    t.string   "content",         limit: 255
+    t.text     "content",         limit: 16777215
     t.datetime "created_at",                                               null: false
     t.datetime "updated_at",                                               null: false
     t.string   "sentiment",       limit: 255
@@ -49,6 +65,14 @@ ActiveRecord::Schema.define(version: 20150604170158) do
     t.decimal  "relevance",              precision: 10
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
+  end
+
+  create_table "notifications", force: :cascade do |t|
+    t.string   "email",         limit: 255
+    t.integer  "frequency",     limit: 4
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.integer  "last_entry_id", limit: 4
   end
 
 end

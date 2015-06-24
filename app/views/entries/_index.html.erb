@@ -3,10 +3,19 @@
 <style>
 .thumb {
     display: inline-block;
-    width: 200px;
+    width: 150px;
 	height: 150px;
     margin: 0px;
-    border: 1px solid #c99;
+    border: 4px solid #999999;
+    background-position: center center;
+    background-size: cover;
+}
+.thumb-flickr {
+    display: inline-block;
+    width: 150px;
+	height: 150px;
+    margin: 0px;
+    border: 1px solid #999999;
     background-position: center center;
     background-size: cover;
 }
@@ -29,20 +38,17 @@
     <% entries.each do |entry| %>
       <tr>
         <td>
-<!--
-			<div class="thumb" style="background-image: url('<%= entry.image %>');"></div>
--->
+						
           <% if entry and entry.image and !entry.image.include? "flickr"%>
-              <img src="<%= entry.image %>">
+              <div class="thumb" style="background-image: url('<%= entry.image %>');"></div>
           <% elsif entry and entry.image %>
-              <img src="<%= entry.image %>" style="width: 151px ;height: 151px ;" >
-              <br>
-              <span class="tiny">flickr</span>
+              <div class="thumb-flickr" style="background-image: url('<%= entry.image %>');"></div>
           <% end %>
 	    </td>
+		
         <td><h4><%= link_to entry.title, analysis_entry_path(entry) %></h4><br>
-			<%= entry.created_at %></td>
-        <!-- <td><%= entry.sentiment %></td> -->
+		<!--	<%= entry.created_at %></td>
+                <td><%= entry.sentiment %></td> -->
         <td>
 			<% if entry.sentiment_score and entry.sentiment_score >= 0 %>
 			     <% $colorTemp = "#66CD00" %>
