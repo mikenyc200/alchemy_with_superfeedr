@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>foundation-rails</title>
+
+    <link rel="stylesheet" media="screen" href="/assets/entries.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" />
+<link rel="stylesheet" media="screen" href="/assets/feeds.self-e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855.css?body=1" />
+<link rel="stylesheet" media="screen" href="/assets/foundation_and_overrides.self-b3a7e1c90e224123fbb66938dcb9ec79aa0b94a4fe9d969d3642089e744b0344.css?body=1" />
+<link rel="stylesheet" media="screen" href="/assets/scaffolds.self-5a0ebe2093b4cd4a16d22840991a69409545f60b95a1f042079edb9691fd4db6.css?body=1" />
+<link rel="stylesheet" media="screen" href="/assets/dataTables/jquery.dataTables.self-5d828ea8a8cd4616d8304869856bc025fc55bd988744f52a96e690234800fc61.css?body=1" />
+<link rel="stylesheet" media="screen" href="/assets/application.self-4f22ee513bff51c07ddbacea6716b3bb025259c40c0c44f68b3b024ed0ff7a2c.css?body=1" />
+    <script src="/assets/vendor/modernizr.self-74da3245def7569da28115667be6a85a2ad97464abe707c9829c46d8975597bc.js?body=1"></script>
+    <script src="/assets/jquery.self-d03a5518f45df77341bdbe6201ba3bfa547ebba8ed64f0ea56bfa5f96ea7c074.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/jquery_ujs.self-8e98a7a072a6cee1372d19fff9ff3e6aa1e39a37d89d6f06861637d061113ee7.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation/foundation.self-ee5396739ce46beb039f26ea629172a74143752d74f703c6c3b219fc52aecf73.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation/foundation.abide.self-f8b56c707a79139807305a5f7efc2aaa0848f0c677abcc056496f507e0192b79.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation/foundation.accordion.self-d55abdcb0a7a29512be2f31f63d418cc8cc4505a0a3c71946d25484b0a0b3f4e.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation/foundation.alert.self-fbde7afb61e8ffd8ab9b717f0bed1e58cb9e0144a25cc773fea634d5554f62cd.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation/foundation.clearing.self-54610737b435a97590fcb176848c3c7a44c4d55d369894260fa7c28c97a70a23.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation/foundation.dropdown.self-c9ee29909e266373e5e814a73fc6ea062245ddd29466d35d232448f73350d78a.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation/foundation.equalizer.self-7aa743bf4660deb2fb2f601c112806a1703c430067531da3f41e4afffe19fee9.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation/foundation.interchange.self-dad8415355087cb21a16fa44bac20d602344d52de5aca9e588e3588fce5dd5a7.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation/foundation.joyride.self-0a5271728699423f583dd5b3b8a11bfe0dc9fb5044446bcf3218ef8ca906a82d.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation/foundation.magellan.self-a50193f172f11e57b373c3001072ba2d6b34b857ab251e9ded30af5242855687.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation/foundation.offcanvas.self-75bffd0c7f4f0d2992ab95f0cc6959282ebb5807da70123d40c01d76e230ec88.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation/foundation.orbit.self-f8d30eb1717c874db26723f9e07901ec0a325d59263f1404ee83a616bb597ad2.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation/foundation.reveal.self-95f01feb3e25e47b58b78da0021ae2fffafdee70846682067c180e0e10f7b095.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation/foundation.slider.self-8911a7352cb577b6b7973b0734d57d2b624c79286558ffa36fcac0c29b2d0bee.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation/foundation.tab.self-9bf6791513d1b20e213bb1aee3df0bc17128c7e18421258dc68a2a4ccabe1647.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation/foundation.tooltip.self-834156796c253580629cfffc720bdc3d191b1e5a5a6ddbc1102ecd08c876516c.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation/foundation.topbar.self-105416f061562f07c6a0a8057d68282fdc1eeb5dc306713fcae6c9a53001fc55.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/foundation.self-abe4ee7a105042f73b12b1f1a28788522d2f253445a475a94ab4d6e1f7b0ec52.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/dataTables/jquery.dataTables.self-770bf6f5f52c93784a25c3c866719f24d091a3f864c36850a7d338b58bbed52c.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/turbolinks.self-c37727e9bd6b2735da5c311aa83fead54ed0be6cc8bd9a65309e9c5abe2cbfff.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/entries.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/feeds.self-877aef30ae1b040ab8a3aba4e3e309a11d7f2612f44dde450b5c157aa5f95c05.js?body=1" data-turbolinks-track="true"></script>
+<script src="/assets/application.self-f7a823b9722f84321c559adceb8660d1824d0d92bf148e2766637a7dbc8bd33e.js?body=1" data-turbolinks-track="true"></script>
+    <meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="JJ2b1qTjTOYSkE6cXdSU/6vJ8toH0p6MbDOVr29weoiOmc+o7nEXhWkQMaZI5CAhX/jaaoG4fmZTf1pTpsh13A==" />
+  </head>
+
+  <body>
+  <nav class="top-bar" data-topbar role="navigation">
+  <div class="top-bar-section">
+    <ul class="left first-nav">
+
+      <!--<li class="divider"></li>-->
+      <li ><a href="/feeds">Feeds</a></li>
+      <li ><a href="/entries">Entries</a></li>
+      <li ><a href="/concepts">Concepts</a></li>
+    </ul>
+
+  </div>
+</nav>
+
+    <p id="notice"></p>
+
+<h1>A Rails based feed reader.</h1>
+
+<p>This simplistic feed reader was built using <a href="https://superfeedr.com/">Superfeedr</a>'s <a href="https://github.com/superfeedr/superfeedr-engine">Rails Engine</a>.</p>
+
+<hr>
+<h4 class="text-center">Filters</h4>
+
+<!--<div class="row">-->
+  <!--<div class="small-10 medium-11 columns">-->
+    <!--<div class="range-slider" data-slider data-options="display_selector: #sliderOutput3; start: 0; end: 10;">-->
+      <!--<span class="range-slider-handle" role="slider" tabindex="0"></span>-->
+      <!--<span class="range-slider-active-segment"></span>-->
+    <!--</div>-->
+  <!--</div>-->
+  <!--<div class="small-2 medium-1 columns">-->
+    <!--<span id="sliderOutput3"></span>-->
+  <!--</div>-->
+<!--</div>-->
+
+<div class="row">
+  <div class="columns large-4 text-center">
+      <label for="concepts_concepts">Concepts</label>
+      <select name="concepts" id="concepts"><option value=""></option></select>
+
+    <label for="Text_text">Text</label>
+    <input type="text" name="text" id="text" />
+
+    <label for="sentiment_score_sentiment score">Sentiment score</label>
+    <span class="prefix"> greater than </span><input type="text" name="sentiment" id="sentiment" />
+
+    <div class="text-center">
+    <button name="button" type="submit" onclick="filter_concepts()" class="tiny  radius success">filter</button>
+    </div>
+
+  </div>
+</div>
+
+<hr>
+
+<a href="/feeds">List of Feeds</a> | <a href="/feeds/new">New Feed</a>
+
+<div id="entries">
+
+<table>
+  <thead>
+    <tr>
+      <th>Feed</th>
+      <th>Title</th>
+      <th>Image</th>
+      <th>Sentiment</th>
+      <th>Sentiment score</th>
+      <th>Analysis</th>
+      <th colspan="1"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  </tbody>
+</table>
+
+
+</div>
+
+<br>
+
+
+<script type="text/javascript">
+  function filter_concepts()
+  {
+      $.ajax({
+          url: '/entries/filter_by_concepts',
+          type: 'GET',
+          data: {concept : $('#concepts').val() , text: $('#text').val() , sentiment: $('#sentiment').val()}
+      });
+  }
+
+</script>
+
+
+  </body>
+</html>

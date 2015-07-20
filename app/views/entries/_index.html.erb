@@ -1,13 +1,35 @@
+<% provide(:title, 'Entries') %>
+
+<style>
+.thumb {
+    display: inline-block;
+    width: 150px;
+	height: 150px;
+    margin: 0px;
+    border: 4px solid #999999;
+    background-position: center center;
+    background-size: cover;
+}
+.thumb-flickr {
+    display: inline-block;
+    width: 150px;
+	height: 150px;
+    margin: 0px;
+    border: 1px solid #999999;
+    background-position: center center;
+    background-size: cover;
+}
+</style>
 
 <table>
   <thead>
     <tr>
-      <th>Feed</th>
-      <th>Title</th>
       <th>Image</th>
-      <th>Sentiment</th>
+      <th>Article</th>
+      <!-- <th>Image</th> -->
+      <!-- <th>Sentiment</th> -->
       <th>Sentiment score</th>
-      <th>Analysis</th>
+      <th>Permalink</th>
       <th colspan="1"></th>
     </tr>
   </thead>
@@ -15,16 +37,26 @@
   <tbody>
     <% entries.each do |entry| %>
       <tr>
-        <td><%= link_to entry.feed.title, entry.feed %></td>
-        <td><%= link_to entry.title, entry.url %></td>
         <td>
-          <% if entry and entry.image_url  %>
-            <%= link_to "Image" , entry.image_url %>
-          <%end  %>
-        </td>
-        <td><%= entry.sentiment %></td>
-        <td><%= entry.sentiment_score %></td>
-        <td><%= link_to "Analysis", analysis_entry_path(entry) %></td>
+						
+          <% if entry and entry.image and !entry.image.include? "flickr"%>
+              <div class="thumb" style="background-image: url('<%= entry.image %>');"></div>
+          <% elsif entry and entry.image %>
+              <div class="thumb-flickr" style="background-image: url('<%= entry.image %>');"></div>
+          <% end %>
+	    </td>
+		
+        <td><h4><%= link_to entry.title, analysis_entry_path(entry) %></h4><br>
+		<!--	<%= entry.created_at %></td>
+                <td><%= entry.sentiment %></td> -->
+        <td>
+			<% if entry.sentiment_score and entry.sentiment_score >= 0 %>
+			     <% $colorTemp = "#66CD00" %>
+			   <% else %>
+			     <% $colorTemp = "#FF0000" %>
+			   <% end %>
+			<span style="color:<%= $colorTemp %>;"><%= entry.sentiment_score %></span></td>
+        <td><%= link_to "Permalink", entry.url %></td>
         <td><%= link_to 'Destroy', entry, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>

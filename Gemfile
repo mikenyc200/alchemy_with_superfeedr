@@ -1,11 +1,11 @@
 source 'https://rubygems.org'
 
-ruby '2.0.0'
+ruby '2.2.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.1'
 # Use postgress as the database for Active Record
-gem 'pg'
+gem 'sqlite3'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -13,7 +13,7 @@ gem 'uglifier', '>= 1.3.0'
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
-# gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', platforms: :ruby
 
 gem 'superfeedr_engine'
 
@@ -37,7 +37,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 group :development, :test do
   # Call 'debugger' anywhere in the code to stop execution and get a debugger console
-  gem 'debugger'
+  gem 'pry-byebug'
 
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
@@ -51,5 +51,17 @@ group :production do
 end
 
 gem 'alchemy-api-rb', :require => 'alchemy_api'
-
+gem 'unirest'
 gem 'jquery-datatables-rails', '~> 3.3.0'
+
+gem 'foundation-rails'
+
+gem 'htmlentities'
+
+gem 'flickraw'
+
+gem 'delayed_job_active_record'
+gem 'delayed_job_web'
+gem 'daemons'
+
+

@@ -1,46 +1,121 @@
+<% provide(:title, @entry.title) %>
 
-<div>
-  <h5>Extracted text</h5>
-  <p>
-      <%= @entry.extracted_text %>
-  </p>
-</div>
+<style>
+.thumb {
+    display: inline-block;
+    width: 320px;
+	height: 320px;
+    margin: 0px;
+    border: 4px solid #999999;
+    background-position: center center;
+    background-size: cover;
+}
+.thumb-flickr {
+    display: inline-block;
+    width: 320px;
+	height: 320px;
+    margin: 0px;
+    border: 1px solid #999999;
+    background-position: center center;
+    background-size: cover;
+}
+.container {
+    width: 380px;
+    padding: 20px;
+}
+</style>
 <table>
-  <thead>
-  <tr>
-    <th>Concept</th>
-    <th>Relevance</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @entry.concepts.each do |concept| %>
-      <tr>
-        <td><%= concept.text %></td>
-        <td><%= concept.relevance.to_f %></td>
-      </tr>
-  <% end %>
-  </tbody>
+	<tr>
+		<td valign="top">
+
+<!-- START CONTENT BLOCK -->
+				
+			<div class="container">
+			  <h4>
+			    <% if @entry and @entry.title %>
+			       <%= @entry.title %>
+			     <% end %>
+			    </h4>
+			  
+			      <% if @entry and @entry.image and !@entry.image.include? "flickr"%>
+			          <div class="thumb" style="background-image: url('<%= @entry.image %>');" align=left></div>
+			      <% elsif @entry and @entry.image %>
+			          <div class="thumb-flickr" style="background-image: url('<%= @entry.image %>');" align=left></div>
+			      <% end %>
+		
+			      <%= simple_format @entry.extracted_text %>
+			  
+			</div>
+			
+<!-- END CONTENT BLOCK -->
+						
+		</td>
+		<td valign="top" bgcolor="#e5e5e5">
+			
+<!-- START META BLOCK -->
+		<p>
+			    <% if @entry and @entry.url %>
+			       <%= link_to "PermalinkURL", @entry.url %>
+			     <% end %>
+				<br>
+				<% if @entry.sentiment_score and @entry.sentiment_score >= 0 %>
+				     <% $colorTemp = "#66CD00" %>
+				   <% else %>
+				     <% $colorTemp = "#FF0000" %>
+				   <% end %>
+				Sentiment: <span style="color:<%= $colorTemp %>;"><%= @entry.sentiment_score %></span>
+				<br>
+			    <% if @entry and @entry.created_at %>
+			       <%= @entry.created_at %>
+			     <% end %>
+		</p>
+<!-- END META BLOCK -->
+<!-- START CONCEPT BLOCK -->
+			
+			<table>
+			  <thead>
+			  <tr>
+			    <th>Concept</th>
+			    <th>Relevance</th>
+			  </tr>
+			  </thead>
+			  <tbody>
+			  <% @entry.concepts.each do |concept| %>
+			      <tr>
+					<td><%= link_to concept.text , entries_from_concepts_entries_path(:concept => concept.text) %></td>
+			      	<td><%= concept.relevance.to_f %></td>
+			      </tr>
+			  <% end %>
+			  </tbody>
+			</table>
+			
+<!-- END CONCEPT BLOCK -->			
+		</td>
+	</tr>
 </table>
+
+
+
 
 <br>
 
 
-<table>
-  <thead>
-  <tr>
-    <th>Keyword</th>
-    <th>Relevance</th>
-  </tr>
-  </thead>
-  <tbody>
-  <% @entry.keywords.each do |k| %>
-      <tr>
-        <td><%= k.text %></td>
-        <td><%= k.relevance.to_f %></td>
-      </tr>
-  <% end %>
-  </tbody>
-</table>
+<!--<table>-->
+  <!--<thead>-->
+  <!--<tr>-->
+    <!--<th>Keyword</th>-->
+    <!--<th>Relevance</th>-->
+  <!--</tr>-->
+  <!--</thead>-->
+  <!--<tbody>-->
+  <!--<%# @entry.keywords.each do |k| %>-->
+      <!--<tr>-->
+        <!--<td><%#= k.text %></td>-->
+        <!--<td><%#= k.relevance.to_f %></td>-->
+      <!--</tr>-->
+  <!--<%# end %>-->
+  <!--</tbody>-->
+<!--</table>-->
 
 
 

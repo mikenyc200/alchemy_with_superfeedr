@@ -1,10 +1,11 @@
 class FeedsController < ApplicationController
-  before_action :set_feed, only: [:show, :edit, :update, :destroy, :retrieve]
+  before_action :set_feed, only: [:show, :edit, :update, :destroy, :retrieve , :concepts]
 
 
   # GET /feeds
   def index
     @feeds = Feed.all
+    #UserMailer.feedback_notification("testing").deliver
   end
 
   # GET /feeds/1
@@ -20,6 +21,49 @@ class FeedsController < ApplicationController
   def edit
   end
 
+  def concepts
+    @concepts = Concept.where(:entry_id => @feed.entries.pluck(:id))
+  end
+
+  def all_concepts
+    @concepts = Concept.all
+    render "feeds/all_concepts"
+  end
+
+  def filter_by_concepts
+
+    @concepts = Concept.all
+    concepts_ids = Concept.all.pluck(:id)
+
+    if !params["relevance"].blank?
+      @concepts =  Concept.where(:id => concepts_ids).where("relevance > ?" , params[:relevance])
+      concepts_ids = @concepts.pluck(:id)
+    end
+
+
+    if !params["text"].blank?
+      @concepts = Concept.where(:id => concepts_ids).where("lower(text) like ?" , "%#{params["text"].downcase}%")
+    end
+
+  end
+
+
+  def filter_by_all_concepts
+
+    @concepts = Concept.all
+    concepts_ids = Concept.all.pluck(:id)
+
+    #if !params["relevance"].blank?
+    #  @concepts =  Concept.where(:id => concepts_ids).where("relevance > ?" , params[:relevance])
+    #  concepts_ids = @concepts.pluck(:id)
+    #end
+
+
+    if !params["text"].blank?
+      @concepts = Concept.where(:id => concepts_ids).where("lower(text) like ?" , "%#{params["text"].downcase}%")
+    end
+
+  end
   # GET /feeds/1/retrieve
   def retrieve
     body, ok = SuperfeedrEngine::Engine.retrieve(@feed)
