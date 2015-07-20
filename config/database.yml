@@ -1,5 +1,5 @@
 development:
-  adapter: mysql2
+  adapter: sqlite3
   encoding: utf8
   database: alchemy_db
   pool: 5

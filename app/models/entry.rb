@@ -14,7 +14,7 @@ class Entry < ActiveRecord::Base
   default_scope {
     order('created_at DESC')
   }
-
+  require 'unirest'
   after_create :alchemy_extract
 
 
